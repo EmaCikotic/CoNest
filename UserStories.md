@@ -1,3 +1,0 @@
-As an elderly homeowner, I want to be able to specify my needs for help with house maintenance and everyday tasks in my rental advertisement so that I can receive the help I need from a tenant who is able to offer it.
-
-As a landlord, I want to see feedback on a potential tenant from their previous landlords so that I can read about pros and cons of renting to this tenant before even starting a trial period.
