@@ -1,0 +1,18 @@
+@startuml
+left to right direction
+
+actor Student
+
+rectangle "Housing Platform" {
+
+  Student -- (Find and Secure Housing)
+
+  (Find and Secure Housing) ..> (Search Housing Listings) : <<include>>
+  (Find and Secure Housing) ..> (View Listing Details) : <<include>>
+  (Find and Secure Housing) ..> (Contact Homeowner) : <<include>>
+
+  (Search Housing Listings) ..> (Filter Listings) : <<extend>>
+  (Contact Homeowner) ..> (Handle Contact Error) : <<extend>>
+
+}
+@enduml
