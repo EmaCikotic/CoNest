@@ -1,0 +1,16 @@
+@startuml
+start
+
+:Search housing;
+:View listings;
+
+if (Listings available?) then (yes)
+  :Select listing;
+  :View details;
+  :Contact homeowner;
+else (no)
+  :Show "no results";
+endif
+
+stop
+@enduml
