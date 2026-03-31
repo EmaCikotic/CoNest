@@ -1,0 +1,19 @@
+@startuml
+left to right direction
+
+actor Homeowner
+
+rectangle "Housing Platform" {
+
+  Homeowner -- (Offer and Manage Housing)
+
+  (Offer and Manage Housing) ..> (Create Listing) : <<include>>
+  (Offer and Manage Housing) ..> (Verify Listing) : <<include>>
+  (Offer and Manage Housing) ..> (Review Student Request) : <<include>>
+  (Offer and Manage Housing) ..> (Accept or Reject Student) : <<include>>
+
+  (Verify Listing) ..> (Request Additional Information) : <<extend>>
+  (Accept or Reject Student) ..> (Reject Student) : <<extend>>
+
+}
+@enduml
