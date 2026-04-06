@@ -2,7 +2,6 @@
 start
 
 :Student initiates a request for a trial living period;
-:Student proposes duration and start date;
 
 if (Homeowner accepts the trial request?) then (yes)
     :System generates "Trial Agreement" document;
@@ -11,7 +10,7 @@ if (Homeowner accepts the trial request?) then (yes)
     :Trial period begins;
     
     label end_of_trial
-    :Trial period reaches end date;
+    :Trial period ends;
     :System prompts both parties for compatibility review;
 
     if (Did parties respond within 24 hours?) then (yes)
