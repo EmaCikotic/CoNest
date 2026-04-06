@@ -1,0 +1,46 @@
+@startuml
+start
+
+:Student initiates a request for a trial living period;
+:Student proposes duration and start date;
+
+if (Homeowner accepts the trial request?) then (yes)
+    :System generates "Trial Agreement" document;
+    :Student and Homeowner sign document;
+    :System marks the house as "Blocked";
+    :Trial period begins;
+    
+    label end_of_trial
+    :Trial period reaches end date;
+    :System prompts both parties for compatibility review;
+
+    if (Did parties respond within 24 hours?) then (yes)
+        if (Both parties wish to transition to long-term?) then (yes)
+            :System converts Trial Agreement to Long-Term Agreement;
+            :System updates house status to "Occupied";
+        else (no)
+            partition "Trial Termination" {
+                :System facilitates "Trial Termination" protocol;
+                :System prompts for feedback on match failure;
+                :System sets a move-out date;
+                :System changes house status to "Available" after move-out;
+            }
+        endif
+    else (no)
+        partition "No Response Handling" {
+            :System sends high-priority warning notification;
+            :System warns house remains "Blocked" and status is "Pending";
+            if (Response received within 48 hours?) then (yes)
+                goto end_of_trial
+            else (no)
+                :System flags case for manual review by CoNest admin;
+            endif
+        }
+    endif
+else (no)
+    :System notifies Student of rejection;
+    :House remains "Available" in the search pool;
+endif
+
+stop
+@enduml
