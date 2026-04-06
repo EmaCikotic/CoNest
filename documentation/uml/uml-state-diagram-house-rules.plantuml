@@ -1,0 +1,23 @@
+@startuml
+skinparam state {
+    BackgroundColor White
+    BorderColor Black
+    ArrowColor Black
+    FontSize 14
+}
+hide empty description
+
+[*] -> Listing_Rules
+Listing_Rules -right-> Editing_Rules : edit chosen
+Listing_Rules --> Creating_Rules : needed not found
+
+Creating_Rules -up-> Editing_Rules : rules created
+
+Editing_Rules -right-> Validating : save clicked
+Validating -left-> Editing_Rules : missing safety rules
+
+Validating -down-> Rules_Live : rules valid
+Rules_Live -right-> [*] : rules ready
+
+Editing_Rules : **entry/** show categories
+@enduml
