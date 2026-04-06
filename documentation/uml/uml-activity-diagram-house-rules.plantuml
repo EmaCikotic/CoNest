@@ -1,0 +1,29 @@
+@startuml
+skinparam conditionStyle diamond
+start
+
+:Homeowner navigates to House Rules section;
+
+repeat
+    :System shows rule categories;
+    repeat
+        :Homeowner selects a category;
+        if (Use predefined rule?) then (yes)
+            :Homeowner toggles rule;
+        else (no)
+            :Homeowner writes custom rule;
+        endif
+        :Homeowner adds specific details/comments;
+    repeat while (Add more rules?) is (yes)
+
+    :Homeowner clicks Save;
+    :System validates rules;
+
+backward:System warns about missing mandatory fields;
+repeat while (Mandatory safety rules present?) is (no) not (yes)
+
+:System updates listing;
+
+:System confirms rules are live;
+stop
+@enduml
