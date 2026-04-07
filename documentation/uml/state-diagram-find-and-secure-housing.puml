@@ -1,0 +1,21 @@
+@startuml
+
+[*] --> Searching
+
+Searching --> ViewingListings : Search housing
+
+ViewingListings --> NoResults : No listings found
+NoResults --> [*]
+
+ViewingListings --> ListingSelected : Listings found
+
+ListingSelected --> ContactingHomeowner : Select listing
+
+ContactingHomeowner --> Error : Request fails
+Error --> ContactingHomeowner : Retry
+
+ContactingHomeowner --> RequestSent : Request successful
+
+RequestSent --> [*]
+
+@enduml
