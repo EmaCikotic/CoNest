@@ -1,0 +1,32 @@
+@startuml
+skinparam conditionStyle diamond
+start
+
+:Homeowner navigates to "Needed assistance" section;
+repeat
+    :System shows standard assistance categories;
+    :Homeowner selects a category;
+
+    if (Use predefined category?) then (yes)
+        :Homeowner selects a category;
+    else (no)
+        :Homeowner selects "other" category;
+    endif
+
+    repeat
+        :Homeowner specifies assistance need;
+
+        if (Text field filled?) then (yes)
+            break
+        else (no)
+            :System displays error "text field must be filled out";
+        endif
+
+    repeat while (not valid)
+    :Homeowner adds details of assistance need;
+
+repeat while (Add more assistance needs?) is (yes)
+:Homeowner saves the assistance needs;
+:System updates the listing with the assistance needs;
+stop
+@enduml
