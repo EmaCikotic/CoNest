@@ -1,0 +1,23 @@
+@startuml
+skinparam state {
+    BackgroundColor White
+    BorderColor Black
+    ArrowColor Black
+    FontSize 14
+}
+hide empty description
+
+[*] -> Showing_Listings
+
+Showing_Listings -right-> Showing_Listing : listing selected
+
+Showing_Listing -right-> Listing_Need_Categories : add assistance need clicked
+
+Listing_Need_Categories -right-> Adding_Assistance_Need : category selected
+
+Adding_Assistance_Need -right-> Assistance_Needs_Updated : save clicked
+
+Assistance_Needs_Updated -left-> Showing_Listing : add another need
+Assistance_Needs_Updated -right-> [*] : done
+
+@enduml
