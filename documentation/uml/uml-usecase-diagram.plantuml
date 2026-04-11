@@ -1,0 +1,36 @@
+@startuml
+left to right direction
+
+actor Student as S
+actor Homeowner as H
+
+rectangle "CoNest Platform" {
+  
+  (Find and Secure Housing) as UC001
+  (Match and Contact Owner) as UC004
+  
+  S -- UC001
+  UC001 ..> UC004 : <<include>>
+
+  (Select Suitable Student) as UC003
+  (Manage Trial Living Period) as UC005
+  
+  H -- UC003
+  
+  UC005 ..> UC003 : <<extend>>
+  S -- UC005
+  H -- UC005
+
+  (Offer and Manage Housing) as UC002
+  (Manage House Rules) as UC006
+  (Specify Household Assistance) as UC007
+  (Give Feedback to Student) as UC008
+
+  H -- UC002
+  H -- UC008
+  
+  UC002 ..> UC006 : <<include>>
+  UC002 ..> UC007 : <<include>>
+
+}
+@enduml
