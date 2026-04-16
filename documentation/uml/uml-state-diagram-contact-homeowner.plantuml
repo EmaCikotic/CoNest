@@ -1,0 +1,23 @@
+@startuml
+skinparam state {
+    BackgroundColor White
+    BorderColor Black
+    ArrowColor Black
+    FontSize 14
+}
+hide empty description
+
+[*] -> Listing_View
+Listing_View -right-> Writing_Message : contact chosen
+Listing_View --> Error_State : listing unavailable
+
+Writing_Message : entry/ open chat interface
+Writing_Message -right-> Validating : send clicked
+Validating -left-> Writing_Message : invalid message
+
+Validating -down-> Message_Sent : message delivered
+Validating -right-> Error_State : contact failed
+
+Message_Sent -right-> [*] : confirmation shown
+Error_State -down-> [*] : use case ends
+@enduml
