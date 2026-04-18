@@ -1,0 +1,82 @@
+@startuml
+left to right direction
+skinparam classAttributeIconSize 0
+
+' ======================
+' CLASSES (ENTITIES)
+' ======================
+
+class Person {
+  name : String
+  email : String
+}
+
+class Student {
+  studentId : Integer
+}
+
+class Homeowner {
+  homeownerId : Integer
+}
+
+class Listing {
+  listingId : Integer
+  title : String
+  price : Float
+  description : String
+}
+
+class Location {
+  locationName : String
+}
+
+class HousingRequest {
+  requestId : Integer
+  message : String
+  status : String
+  requestDate : Date
+}
+
+class TimeSlot {
+  startDate : Date
+  endDate : Date
+}
+
+class ListingDetails {
+  verificationStatus : String
+  compatibilityInfo : String
+}
+
+' ======================
+' INHERITANCE
+' ======================
+
+Student --|> Person
+Homeowner --|> Person
+
+' ======================
+' ASSOCIATIONS
+' ======================
+
+Student "1" --> "0..*" HousingRequest : sends
+HousingRequest "1" --> "1" Listing : for
+
+Listing "0..*" --> "1" Homeowner : owned by
+Listing "1" --> "1" Location : located at
+
+Student "0..*" --> "0..*" Listing : browses
+
+' ======================
+' ASSOCIATIONS WITH ATTRIBUTES 
+' ======================
+
+Student "0..*" --> "0..*" TimeSlot : plans stay
+TimeSlot "0..*" --> "1" Listing : for availability
+
+' ======================
+' COMPLEX ATTRIBUTE 
+' ======================
+
+Listing --> ListingDetails : has
+
+@enduml
